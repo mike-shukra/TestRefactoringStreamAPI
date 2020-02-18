@@ -14,10 +14,11 @@ public class MainTest {
     private static Set<String> mySet = new HashSet<>();
 
     public static void main(String[] args) {
+        groups.add(new MembersGroup("group00", createMembers(10)));
         groups.add(new MembersGroup("group01", createMembers(20)));
         groups.add(new MembersGroup("group02", createMembers(30)));
         groups.add(new MembersGroup("group03", createMembers(40)));
-        mySet = finder.findOldMembers(groups, 30);
+        mySet = finder.findOldMembers(groups, 35);
 
         System.out.println("test: ");
         for (String group: mySet) {

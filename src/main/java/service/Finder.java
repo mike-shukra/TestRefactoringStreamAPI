@@ -1,6 +1,5 @@
 package service;
 
-import data.Member;
 import data.MembersGroup;
 
 import java.util.HashSet;
@@ -17,13 +16,9 @@ public class Finder {
      */
     public Set<String> findOldMembers(List<MembersGroup> groups, int targetAge) {
         Set<String> groupsNames = new HashSet<>();
+
         for (MembersGroup membersGroup : groups) {
-            for (Member member : membersGroup.getMembers()) {
-                if (member.getAge() > targetAge) {
-                    String name = member.getName();
-                    groupsNames.add(name);
-                }
-            }
+            membersGroup.getMembers().stream().filter((p) -> p.getAge() > targetAge).forEach(x -> groupsNames.add(x.getName()));
         }
         return groupsNames;
     }
